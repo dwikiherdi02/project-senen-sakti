@@ -18,10 +18,13 @@ title(__('Landing Page'));
     </div>
 
     <div class="signin-content">
-        {{-- <a href="/" class="btn btn-scroll-casual btn-scroll-xl btn-scroll-animate fm fm-chewy fs-3xl text-uppercase" data-animate="bounce" data-animate-trigger="load" data-animate-infinite="false">
+        {{-- <a href="/"
+            class="btn btn-scroll-casual btn-scroll-xl btn-scroll-animate fm fm-chewy fs-3xl text-uppercase"
+            data-animate="bounce" data-animate-trigger="load" data-animate-infinite="false">
             Masuk
         </a> --}}
-        <a href="/" class="btn btn-scroll-casual btn-scroll-xl btn-scroll-animate fm fm-chewy fs-3xl text-uppercase">
+        <a href="{{ route('menu.index') }}"
+            class="btn btn-scroll-wood btn-scroll-xl btn-scroll-animate btn-scroll-animate-load fm fm-chewy fs-3xl text-uppercase">
             Masuk
         </a>
     </div>

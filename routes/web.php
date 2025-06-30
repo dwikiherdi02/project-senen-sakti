@@ -8,3 +8,4 @@ use Livewire\Volt\Volt;
 // });
 
 Volt::route('/', 'pages.landingpage.index')->name('landingpage.index');
+Volt::route('/menu', 'pages.menu.index')->name('menu.index');
