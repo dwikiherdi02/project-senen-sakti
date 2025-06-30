@@ -1,0 +1,324 @@
+// Variables
+// @import "variables";
+
+// Bootstrap CSS
+// @import "~bootstrap/scss/bootstrap";
+@use "~bootstrap/scss/bootstrap" as *;
+
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka:wght@300..700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+// Custom Variables
+:root {
+    --bg1-image: url('../images/bg.JPG'); // Path dari resources/scss
+    
+    --sb-casual: url('../images/scroll-banner/sb-casual.png');
+    --sb-success: url('../images/scroll-banner/sb-success.png');
+    --sb-danger: url('../images/scroll-banner/sb-danger.png');
+    --sb-warning: url('../images/scroll-banner/sb-warning.png');
+}
+// $bg1-image: url("../images/bg.JPG");
+
+// $sb-success: url("../images/scroll-banner/sb-success.png");
+// $sb-danger: url("../images/scroll-banner/sb-danger.png");
+// $sb-warning: url("../images/scroll-banner/sb-warning.png");
+
+// Custom styles
+body {
+    font-family: 'Nunito', sans-serif;
+    overflow: hidden;
+}
+
+
+.bg-1 {
+    background-image: var(--bg1-image);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    width: 100%;
+    
+    // Untuk responsive images
+    @media (max-width: 768px) {
+        background-attachment: scroll; // Better performance on mobile
+        background-size: cover;
+        min-height: 100vh; // Pastikan minimal full viewport height
+        height: auto;
+    }
+    
+    @media (max-width: 480px) {
+        background-size: cover; // Tetap gunakan cover, bukan contain
+        background-position: center center;
+        min-height: 100vh;
+        min-height: 100dvh; // Dynamic viewport height untuk mobile modern
+    }
+    
+    // Tambahan untuk memastikan full screen di semua device
+    @media screen and (max-height: 600px) {
+        min-height: 100vh;
+        background-size: cover;
+    }
+}
+
+
+// custom font families
+.fm {
+    &.fm-chewy {
+        font-family: "Chewy", system-ui !important;
+    }
+
+    &.fm-fredoka {
+        font-family: "Fredoka", sans-serif !important;
+    }
+}
+
+// Custom font sizes
+.fs {
+    &-xs {
+        font-size: 0.75rem !important; // 12px
+    }
+    
+    &-sm {
+        font-size: 0.875rem !important; // 14px
+    }
+    
+    &-base {
+        font-size: 1rem !important; // 16px
+    }
+    
+    &-lg {
+        font-size: 1.125rem !important; // 18px
+    }
+    
+    &-xl {
+        font-size: 1.25rem !important; // 20px
+    }
+    
+    &-2xl {
+        font-size: 1.5rem !important; // 24px
+    }
+    
+    &-3xl {
+        font-size: 1.875rem !important; // 30px
+    }
+    
+    &-4xl {
+        font-size: 2.25rem !important; // 36px
+    }
+    
+    &-5xl {
+        font-size: 3rem !important; // 48px
+    }
+    
+    &-6xl {
+        font-size: 3.75rem !important; // 60px
+    }
+}
+
+// Button Scroll Banner
+.btn {
+    // Base scroll button styles
+    &.btn-scroll-casual,
+    &.btn-scroll-success,
+    &.btn-scroll-danger,
+    &.btn-scroll-warning {
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+        background-color: transparent;
+        padding: 0px;
+        color: black;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        
+        // Word wrap properties - max 15 characters per line
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 15ch; // 15 characters width
+        margin: 0 auto; // Center the button
+        
+        /* &.btn-scroll-animate:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+        
+        &.btn-scroll-animate:active {
+            transform: scale(0.95);
+        }
+        
+        &.btn-scroll-animate:focus {
+            box-shadow: none;
+            outline: none;
+        } */
+
+        &.btn-scroll-animate:hover {
+            animation: pulse-smooth 2s ease-in-out infinite;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        &.btn-scroll-animate:active {
+            animation: click-smooth 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: scale(0.92);
+        }
+        
+        &.btn-scroll-animate:focus {
+            box-shadow: none;
+            outline: none;
+        }
+        
+        @keyframes pulse-smooth {
+            0%, 100% {
+            transform: scale(1);
+            filter: brightness(1);
+            }
+            50% {
+            transform: scale(1.03);
+            filter: brightness(1.1);
+            }
+        }
+        
+        @keyframes click-smooth {
+            0% {
+            transform: scale(1);
+            }
+            30% {
+            transform: scale(0.88);
+            }
+            70% {
+            transform: scale(0.92);
+            }
+            100% {
+            transform: scale(0.9);
+            }
+        }
+        
+        // Size variations
+        &.btn-scroll-sm {
+            min-height: 100px;
+            min-width: 120px;
+            max-width: 12ch; // Lebih kecil untuk ukuran sm
+            padding: 25px 30px;
+            font-size: 0.875rem;
+        }
+        
+        &.btn-scroll-md {
+            min-height: 150px;
+            min-width: 180px;
+            max-width: 15ch;
+            padding: 37.5px 45px;
+            font-size: 1rem;
+        }
+        
+        &.btn-scroll-lg {
+            min-height: 200px;
+            min-width: 240px;
+            max-width: 18ch; // Lebih besar untuk ukuran lg
+            padding: 50px 60px;
+            font-size: 1.125rem;
+        }
+        
+        &.btn-scroll-xl {
+            min-height: 250px;
+            min-width: 300px;
+            max-width: 20ch; // Lebih besar untuk ukuran xl
+            padding: 62.5px 75px;
+            font-size: 1.25rem;
+        }
+    }
+
+    &.btn-scroll-casual {
+        background-image: var(--sb-casual);
+        // color: #4f2f17 !important;
+        color: #381b09 !important;
+    }
+
+    &.btn-scroll-success {
+        background-image: var(--sb-success);
+    }
+
+    &.btn-scroll-danger {
+        background-image: var(--sb-danger);
+    }
+
+    &.btn-scroll-warning {
+        background-image: var(--sb-warning);
+    }
+}
+
+// Content Sign In
+.signin-content {
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10; // Pastikan di atas background
+    padding: 20px;
+    width: 100%;
+
+    @media (min-width: 768px) {
+        bottom: -12%;
+    }
+}
+
+// Senen Sakti Title Styling
+.senen-sakti-content {
+    position: absolute;
+    top: 50%;
+    left: calc(50% + (0.4em * 2));
+    transform: translate(-50%, -50%);
+    z-index: 15;
+    text-align: center;
+    
+    .senen-sakti-title {
+        font-size: 6rem !important;
+        background: linear-gradient(135deg, #F5E6A3 0%, #E6D16A 25%, #D4AF37 50%, #C19A6B 75%, #A0522D 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 
+            3px 3px 0px #8B4513, 
+            -1px -1px 0px #A0522D, 
+            1px -1px 0px #A0522D, 
+            -1px 1px 0px #A0522D, 
+            1px 1px 0px #A0522D,
+            4px 4px 8px rgba(160, 82, 45, 0.6),
+            2px 2px 4px rgba(0, 0, 0, 0.2);
+        line-height: 1.5;
+        letter-spacing: 0.4em;
+        margin: 0;
+        
+        // Fallback untuk browser yang tidak support background-clip
+        color: #E6D16A;
+        
+        // Responsive font sizes
+        @media (max-width: 768px) {
+            font-size: 5rem !important;
+            letter-spacing: 0.25em;
+        }
+        
+        @media (max-width: 480px) {
+            // font-size: 5rem !important;
+            letter-spacing: 0.2em;
+        }
+    }
+
+    // Responsive font sizes
+    @media (max-width: 768px) {
+        left: calc(50% + (0.25em * 2));
+    }
+    
+    @media (max-width: 480px) {
+        left: calc(50% + (0.2em * 2));
+    }
+}
+
