@@ -1,0 +1,117 @@
+:root {
+    // scroll
+    --scroll-stick-wood: url('../images/scrolls/stick-wood.svg');
+    // --scroll-stick-wood: url('../images/scrolls/stick-wood.png');
+
+    --scroll-sm-margin: 2.3rem;
+    --scroll-md-margin: 2.5rem;
+    --scroll-lg-margin: 2.7rem;
+    --scroll-xl-margin: 2.9rem;
+
+    --scroll-sm-padding: 2rem 0;
+    --scroll-md-padding: 2.5rem 0;
+    --scroll-lg-padding: 3rem 0;
+    --scroll-xl-padding: 3.5rem 0;
+}
+
+.scroll-banner {
+    position: relative;
+    width: auto; // Changed to auto to fit parent
+    max-width: 100%; // Ensure it doesn't exceed parent width
+    max-height: 316px;
+    background-color: transparent;
+    display: inline-block; // Added to make width behave properly
+    
+    &.scroll-banner-sm {
+        height: 160px;
+        padding: var(--scroll-sm-padding);
+        margin: 0 calc(var(--scroll-sm-margin) + .5rem);
+    }
+    
+    &.scroll-banner-md {
+        height: 200px;
+        padding: var(--scroll-md-padding);
+        margin: 0 calc(var(--scroll-md-margin) + .5rem);
+    }
+
+    &.scroll-banner-lg {
+        height: 240px;
+        padding: var(--scroll-lg-padding);
+        margin: 0 calc(var(--scroll-lg-margin) + .5rem);
+    }
+
+    &.scroll-banner-xl {
+        height: 280px;
+        padding: var(--scroll-xl-padding);
+        margin: 0 calc(var(--scroll-xl-margin) + .5rem);
+    }
+    
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 50px; // Lebar stick sesuai dengan SVG
+        height: 100%;
+        background-image: var(--scroll-stick-icon);
+        background-size: 50px 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 1;
+    }
+
+    &.scroll-banner-wood {
+        --scroll-stick-icon: var(--scroll-stick-wood);
+    }
+    
+    &::before {
+        left: calc(var(--scroll-margin) * -1);
+    }
+    
+    &::after {
+        right: calc(var(--scroll-margin) * -1);
+        transform: scaleX(-1);
+    }
+    
+    &.scroll-banner-sm {
+        --scroll-margin: var(--scroll-sm-margin);
+    }
+    
+    &.scroll-banner-md {
+        --scroll-margin: var(--scroll-md-margin);
+    }
+
+    &.scroll-banner-lg {
+        --scroll-margin: var(--scroll-lg-margin);
+    }
+
+    &.scroll-banner-xl {
+        --scroll-margin: var(--scroll-xl-margin);
+    }
+
+    // Content area
+    .scroll-banner-content {
+        // background-color: #cfaf80;
+        height: 100%;
+        width: 100%;
+
+        .scroll-banner-btn {
+            background-color: #FCF4D4;
+            border: none;
+            border-bottom: 24px solid #CFAF80;
+            border-top: 24px solid #CFAF80;
+            cursor: pointer;
+            display: inline-block;
+            height: 100%;
+            margin: 0;
+            padding: 0 1rem;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    // Legacy support - keep for backward compatibility
+    .scroll-banner-btn {
+        @extend .scroll-banner-content;
+    }
+}

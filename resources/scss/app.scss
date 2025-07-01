@@ -15,7 +15,8 @@
     --bg1-image: url('../images/bg.JPG'); // Path dari resources/scss
 
     --sb-casual: url('../images/scroll-banner/sb-casual.png');
-    --sb-wood: url('../images/scroll-banner/sb-wood.png');
+    // --sb-wood: url('../images/scroll-banner/sb-wood.png');
+    --sb-wood: url('../images/scroll-banner/sb-wood.svg');
     --sb-primary: url('../images/scroll-banner/sb-primary.png');
     --sb-success: url('../images/scroll-banner/sb-success.png');
     --sb-danger: url('../images/scroll-banner/sb-danger.png');
@@ -392,4 +393,7 @@ body {
         max-width: 85%; // container-xl
     }
 }
+
+// Custom Scroll Banner
+@import "scroll-banner";
 
